@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize} from "../database/database.js";
-
 import { categorias } from "./categorias.js";
 import { marcas } from "./marcas.js";
 
