@@ -2,22 +2,22 @@ import { DataTypes, Model, Sequelize } from "sequelize";
 import { CategoriaId } from "./categoria-id";
 import { CategoriaNombre } from "./categoria-nombre";
 
-// Interfaz que define la estructura de la entidad
+
 export interface CategoriaAttributes {
   id: number;
   nombre: string;
 }
 
-// Clase que extiende Model para la entidad "categorias"
+
 export class Categoria extends Model<CategoriaAttributes> implements CategoriaAttributes {
   public id!: number;
   public nombre!: string;
 
-  // Timestamps
+
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  // Métodos para trabajar con Value Objects
+  
   getId(): CategoriaId {
     return new CategoriaId(this.id);
   }
@@ -35,7 +35,7 @@ export class Categoria extends Model<CategoriaAttributes> implements CategoriaAt
   }
 }
 
-// Función para inicializar el modelo
+
 export const initCategoriaModel = (sequelize: Sequelize): typeof Categoria => {
   Categoria.init(
     {

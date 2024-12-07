@@ -4,7 +4,7 @@ import { ProductoNombre } from "./producto-nombre";
 import { ProductoDescripcion } from "./producto-descripcion";
 import { ProductoCantidad } from "./producto-cantidad";
 
-// Interfaz que define la estructura de la entidad
+
 export interface ProductoAttributes {
   id: number;
   nombre: string;
@@ -12,18 +12,18 @@ export interface ProductoAttributes {
   cantidad: number;
 }
 
-// Clase que extiende Model para la entidad "productos"
+
 export class Producto extends Model<ProductoAttributes> implements ProductoAttributes {
   public id!: number;
   public nombre!: string;
   public descripcion!: string;
   public cantidad!: number;
 
-  // Timestamps
+  
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  // Métodos para trabajar con Value Objects
+  
   getId(): ProductoId {
     return new ProductoId(this.id);
   }
@@ -57,7 +57,7 @@ export class Producto extends Model<ProductoAttributes> implements ProductoAttri
   }
 }
 
-// Función para inicializar el modelo
+
 export const initProductoModel = (sequelize: Sequelize): typeof Producto => {
   Producto.init(
     {
