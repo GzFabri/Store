@@ -2,9 +2,6 @@ import app from './app.js';
 import {sequelize} from './database/database.js';
 
 
-import './models/productos.js';
-import './models/marcas.js';
-import './models/categorias.js';
 
 /*
 sequelize.sync()
