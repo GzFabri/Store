@@ -1,17 +1,16 @@
-import { Producto } from '../../dominio/producto';
-import { ProductoRepositorio } from '../repositorios/producto.repositorio';
+import { Producto } from 'dominio/modelos/producto';
+import { RepositorioProducto } from 'dominio/repositorios/repositorio_producto';
 
 export class CrearProductoCasoDeUso {
-  constructor(private readonly productoRepositorio: ProductoRepositorio) {}
+  constructor(private readonly repositorioProducto: RepositorioProducto) {}
 
   async ejecutar(
     nombre: string,
     cantidad: number,
-    descripcion: string,
-    marcaId: string,
-    categoriaId: string
+    descripcion: string
+    
   ): Promise<Producto> {
-    const nuevoProducto = new Producto(nombre, cantidad, descripcion, marcaId, categoriaId);
-    return await this.productoRepositorio.crear(nuevoProducto);
+    const nuevoProducto = new Producto(nombre, cantidad, descripcion);
+    return await this.repositorioProducto.crear(nuevoProducto);
   }
 }

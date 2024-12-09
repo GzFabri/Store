@@ -1,11 +1,12 @@
-import { Categoria } from '../../dominio/categoria';
-import { CategoriaRepositorio } from '../repositorios/categoria.repositorio';
+import { Categoria } from "dominio/modelos/categoria";
+import { RepositorioCategoria } from "dominio/repositorios/repositorio_categoria";
 
-export class CrearCategoriaCasoDeUso {
-  constructor(private readonly categoriaRepositorio: CategoriaRepositorio) {}
+export class CrearCategoriaCasoUso {
+  constructor(private repositorio: RepositorioCategoria) {}
 
-  async ejecutar(nombre: string,): Promise<Categoria> {
-    const nuevaCategoria = new Categoria(nombre);
-    return await this.categoriaRepositorio.crear(nuevaCategoria);
+  async ejecutar(id: string, nombre: string): Promise<void> {
+    const nuevaCategoria = new Categoria(id, nombre);
+    await this.repositorio.crear(nuevaCategoria);
   }
 }
+

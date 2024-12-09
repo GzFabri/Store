@@ -1,4 +1,7 @@
-import { Sequelize } from "sequelize-typescript";
+import { Categoria } from "dominio/modelos/categoria";
+import { Marca } from "dominio/modelos/marca";
+import { Producto } from "dominio/modelos/producto";
+import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize({
     dialect: 'mysql',
@@ -7,7 +10,10 @@ const sequelize = new Sequelize({
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'tienda_maquillaje',
     logging: false,
-    models: [UserModel], // Agrega los modelos aquí
+    models: [Categoria,Marca,Producto], // Agrega los modelos aquí
   });
   
   export default sequelize;
+  
+
+  

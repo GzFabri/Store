@@ -1,9 +1,13 @@
-import { CategoriaRepositorio } from '../repositorios/categoria.repositorio';
+import { RepositorioCategoria } from "dominio/repositorios/repositorio_categoria";
 
-export class EliminarCategoriaCasoDeUso {
-  constructor(private readonly categoriaRepositorio: CategoriaRepositorio) {}
+export class EliminarCategoriaCasoUso {
+  constructor(private repositorio: RepositorioCategoria) {}
 
   async ejecutar(id: string): Promise<void> {
-    await this.categoriaRepositorio.eliminar(id);
+    const categoria = await this.repositorio.buscarPorId(id);
+    if (!categoria) {
+      throw new Error("Categoría no encontrada");
+    }
+    await this.repositorio.eliminar(id);
   }
 }

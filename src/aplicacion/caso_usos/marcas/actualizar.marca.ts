@@ -1,9 +1,15 @@
-import { MarcaRepositorio } from '../repositorios/marca.repositorio';
+import { Marca } from "dominio/modelos/marca";
+import { RepositorioMarca } from "dominio/repositorios/repositorio_marca";
 
-export class ActualizarMarcaCasoDeUso {
-  constructor(private readonly marcaRepositorio: MarcaRepositorio) {}
+export class ActualizarMarcaCasoUso {
+  constructor(private repositorio: RepositorioMarca) {}
 
-  async ejecutar(id: string, datos: { nombre?: string }): Promise<void> {
-    await this.marcaRepositorio.actualizar(id, datos);
+  async ejecutar(id: string, nuevoNombre: string): Promise<void> {
+    const marca = await this.repositorio.buscarPorId(id);
+    if (!marca) {
+      throw new Error("Marca no encontrada");
+    }
+    marca.actualizarNombre(nuevoNombre);
+    await this.repositorio.actualizar(marca);
   }
 }

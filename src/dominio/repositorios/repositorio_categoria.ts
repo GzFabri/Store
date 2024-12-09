@@ -1,4 +1,4 @@
-import { Categoria } from "../modelos/categoria";
+import { Categoria } from "dominio/modelos/categoria";
 
 export interface RepositorioCategoria {
   crear(categoria: Categoria): Promise<void>;
