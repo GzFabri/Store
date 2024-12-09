@@ -7,7 +7,7 @@ const sequelize = new Sequelize({
     dialect: 'mysql',
     host: process.env.DB_HOST || 'localhost',
     username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
+    password: process.env.DB_PASSWORD || 'f4',
     database: process.env.DB_NAME || 'tienda_maquillaje',
     logging: false,
     models: [Categoria,Marca,Producto], // Agrega los modelos aquí
