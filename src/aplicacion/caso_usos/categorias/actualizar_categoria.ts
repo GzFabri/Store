@@ -1,9 +1,15 @@
-import { CategoriaRepositorio } from '../repositorios/categoria.repositorio';
+import { Categoria } from "dominio/modelos/categoria";
+import { RepositorioCategoria } from "dominio/repositorios/repositorio_categoria";
 
-export class ActualizarCategoriaCasoDeUso {
-  constructor(private readonly categoriaRepositorio: CategoriaRepositorio) {}
+export class ActualizarCategoriaCasoUso {
+  constructor(private repositorio: RepositorioCategoria) {}
 
-  async ejecutar(id: string, datos: { nombre?: string }): Promise<void> {
-    await this.categoriaRepositorio.actualizar(id, datos);
+  async ejecutar(id: string, nuevoNombre: string): Promise<void> {
+    const categoria = await this.repositorio.buscarPorId(id);
+    if (!categoria) {
+      throw new Error("Categoría no encontrada");
+    }
+    categoria.actualizarNombre(nuevoNombre);
+    await this.repositorio.actualizar(categoria);
   }
 }

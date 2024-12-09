@@ -1,9 +1,14 @@
-import { MarcaRepositorio } from '../repositorios/marca.repositorio';
+import { RepositorioMarca} from "dominio/repositorios/repositorio_marca";
 
-export class EliminarMarcaCasoDeUso {
-  constructor(private readonly marcaRepositorio: MarcaRepositorio) {}
+export class EliminarMarcaCasoUso {
+  constructor(private repositorio: RepositorioMarca) {}
 
   async ejecutar(id: string): Promise<void> {
-    await this.marcaRepositorio.eliminar(id);
+    const marca = await this.repositorio.buscarPorId(id);
+    if (!marca) {
+      throw new Error("marca no encontrada");
+    }
+    await this.repositorio.eliminar(id);
   }
 }
+

@@ -1,4 +1,4 @@
-import { Marca } from "../modelos/marca";
+import { Marca } from "dominio/modelos/marca";
 
 export interface RepositorioMarca {
   crear(marca: Marca): Promise<void>;
