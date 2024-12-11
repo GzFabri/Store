@@ -2,24 +2,25 @@
   "name": "my_store",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "tsx src/infraestructura/modelos/app.ts",
+    "dev": "nodemon"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@types/sequelize": "^4.28.20",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "mysql2": "^3.11.5",
     "sequelize": "^6.37.5",
     "sequelize-typescript": "^2.1.6",
-    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2"
   }
 }
